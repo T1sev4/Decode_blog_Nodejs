@@ -1,0 +1,38 @@
+<header class="">
+  <div class="container">
+    <div class="header-inner p-4">
+      <div class="header-logo"><a href="/">Decode Blog</a></div>
+
+      <form class="header-search">
+        <input type="text" placeholder="Поиск по блогам" name="search" />
+        <button type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <span>Найти</span>
+        </button>
+      </form>
+
+      <% if(user._id && user.full_name.length > 0){ %>
+      <div class="header-avatar">
+        <a href="/profile/<%= user._id  %>">
+          <img src="/image/avatar.png" alt="" />
+        </a>
+      </div>
+
+      <% }else{ %>
+
+      <div class="header-btns">
+        <a href="/register" class="accent-btn">Регистрация</a>
+        <a href="/login" class="accent-btn ms-3">Вход</a>
+      </div>
+      <div class="header-btns">
+        <a href="/register" class="accent-btn"
+          ><i class="fa-solid fa-arrow-right-to-bracket"></i
+        ></a>
+        <a href="/login" class="accent-btn ms-3"
+          ><i class="fa-solid fa-user"></i
+        ></a>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</header>

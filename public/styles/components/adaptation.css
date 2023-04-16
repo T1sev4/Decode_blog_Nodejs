@@ -1,0 +1,103 @@
+@media (max-width: 992px) {
+  .header-inner {
+    flex-wrap: wrap;
+  }
+  .header-btns {
+    display: none;
+    width: 20%;
+  }
+  .header-btns:last-child {
+    display: flex;
+  }
+  .accent-btn {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .aside h2 {
+    font-size: 24px;
+  }
+}
+@media (max-width: 768px) {
+  .header-logo a {
+    font-size: 2rem;
+  }
+  .header-search {
+    display: none;
+  }
+  .accent-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .aside {
+    padding: 43px 10px;
+  }
+  .aside h2 {
+    font-size: 16px;
+  }
+  .aside-category {
+    font-size: 10px;
+  }
+  .main-title h2 {
+    font-size: 1.4rem;
+  }
+  .main-title p {
+    font-size: 10px;
+    line-height: 16px;
+  }
+  .card-info {
+    flex-wrap: wrap;
+  }
+  .card-info span {
+    margin-bottom: 20px;
+  }
+  .card-body a {
+    font-size: 1.4rem;
+  }
+  .card-body p {
+    font-size: 12px;
+  }
+  .card-info {
+    font-size: 10px;
+  }
+}
+@media (max-width: 576px) {
+  .main-title h2 {
+    font-size: 1rem;
+  }
+  .main-title p {
+    font-size: 8px;
+  }
+  .main-left {
+    padding: 40px 20px;
+  }
+  .aside h2 {
+    font-size: 0.8rem;
+  }
+  .aside-category {
+    font-size: 8px;
+  }
+  .login {
+    width: 80%;
+  }
+}
+@media (max-width: 400px) {
+  .header-logo a {
+    font-size: 1.25rem;
+  }
+  .main-title h2 {
+    font-size: 1rem;
+  }
+  .accent-btn {
+    width: 30px;
+    height: 40px;
+  }
+  .login {
+    width: 100%;
+  }
+}

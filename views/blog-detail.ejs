@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head.ejs') %>
+    <title>Blog</title>
+  </head>
+
+  <body>
+    <%- include('partials/header.ejs') %>
+    <div class="main container mt-5">
+      <div class="main-left">
+        <div class="main-title text-center">
+          <h2>Блоги по программированию</h2>
+          <p>
+            Популярные и лучшие публикации по программированию для начинающих и
+            профессиональных программистов и IT-специалистов.
+          </p>
+        </div>
+        <div class="blogs">
+          <div class="card">
+            <img
+              src="/image/test.png"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h3 class="">Card title</h3>
+              <p class="">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <div class="card-info">
+                <span><i class="fa-solid fa-calendar"></i>26.06.2020</span>
+                <span><i class="fa-solid fa-eye"></i>21</span>
+                <span><i class="fa-solid fa-comment"></i>4</span>
+                <span><i class="fa-solid fa-comments"></i>Веб-разработка</span>
+                <span><i class="fa-solid fa-user"></i>Nast1289</span>
+              </div>
+            </div>
+          </div>
+          <div class="comments mt-4">
+            <h2 class="comments-number">2 комментария</h2>
+            <div class="comments-block">
+              <div class="comment">
+                <div class="comment-title">
+                  <img
+                    src="/image/avatar.png"
+                    alt=""
+                  />
+                  <h3>Елнур Сеитжанов</h3>
+                </div>
+                <p>
+                  В отличие от обычных виджетов пользовательского интерфейса
+                  JavaScript, комплексные виджеты - это полноценные приложения,
+                  которые не требуют дополнительной настройки и кастомизации.
+                </p>
+              </div>
+            </div>
+            <div class="comment-add">
+              <form class="mt-5">
+                <textarea
+                  class="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  placeholder="Введит текст комментария"
+                ></textarea>
+                <button class="btn accent-btn mt-2">Отправить</button>
+              </form>
+            </div>
+            <!-- <div class="comment-none accent-color mt-3">
+              <p>
+                Чтобы оставить комментарий <span>зарегистрируйтесь</span>, или
+                <span>войдите</span> в аккаунт.
+              </p>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="aside">
+        <h2>Категории</h2>
+        <div class="mt-5">
+          <a
+            class="aside-category"
+            href=""
+            >Прогнозы в IT</a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

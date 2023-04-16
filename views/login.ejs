@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head.ejs') %>
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('partials/header.ejs') %>
+    <div class="login">
+      <form class="" action="/api/signin" method="POST">
+        <h2>Вход</h2>
+        <div class="mb-3">
+          <input
+            type="email"
+            class="form-control form-control-lg"
+            id="email"
+            placeholder="Введите email"
+            name="email"
+          />
+        </div>
+        <div class="mb-3">
+          <input
+            type="password"
+            class="form-control form-control-lg"
+            id="password"
+            placeholder="password"
+            name="password"
+          />
+        </div>
+        <button class="btn accent-btn" type="submit">Войти</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+}
+.main-left {
+  width: 70%;
+  background-color: #fff;
+  padding: 40px 65px;
+}
+
+.main-title h2 {
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 46px;
+}
+.main-title p {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  margin: 25px 0;
+}
+.card-body a {
+  color: #000;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 24px;
+  margin-top: 10px;
+}
+.card-body p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 20px 0;
+}
+.card-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-info i {
+  margin-right: 10px;
+}

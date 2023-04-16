@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head.ejs') %>
+    <title>Blog</title>
+  </head>
+
+  <body>
+    <%- include('partials/header.ejs') %>
+    <div class="main container mt-5">
+      <div class="main-left">
+        <div class="main-title">
+          <div class="profile-title">
+            <h2>Мои блоги</h2>
+            <a class="btn accent-btn" href="/newBlog">Добавить блог</a>
+          </div>
+          <p>
+            Популярные и лучшие публикации по программированию для начинающих и
+            профессиональных программистов и IT-специалистов.
+          </p>
+        </div>
+        <div class="blogs">
+          <div class="card">
+            <img src="/image/test.png" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <div class="card-title">
+                <h3 class="">Card title</h3>
+                <div class="dropdown">
+                  <button
+                    class="btn"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="#">Редактировать</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Удалить</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <p class="">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <div class="card-info">
+                <span><i class="fa-solid fa-calendar"></i>26.06.2020</span>
+                <span><i class="fa-solid fa-eye"></i>21</span>
+                <span><i class="fa-solid fa-comment"></i>4</span>
+                <span><i class="fa-solid fa-comments"></i>Веб-разработка</span>
+                <span><i class="fa-solid fa-user"></i>Nast1289</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="aside aside-profile">
+        <img src="/image/avatar.png" alt="" />
+        <h3><%= user.full_name %></h3>
+        <p><%= user.email %></p>
+        <p>В основном пишу про веб - разработку, на React & Redux</p>
+        <div class="aside-btns mt-3">
+          <a class="btn accent-btn" href="">Редактировать</a>
+          <a class="btn danger-btn" href="/api/signout">Выход</a>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

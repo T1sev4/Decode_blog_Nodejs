@@ -1,0 +1,26 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  width: 50%;
+  margin: 0 auto;
+}
+.login form {
+  text-align: center;
+  width: 70%;
+}
+.login form input {
+  width: 100%;
+}
+.login form > h2 {
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 46px;
+  margin-bottom: 30px;
+}
+.login form button {
+  padding: 5px 100px;
+  margin: 0 auto;
+}

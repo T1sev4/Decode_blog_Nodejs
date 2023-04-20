@@ -30,7 +30,7 @@ app.set('view engine', 'ejs');
 app.use(require('./server/pages/router'));
 app.use(require('./server/Categories/router'));
 app.use(require('./server/auth/router'));
-
+app.use(require('./server/Blogs/router'));
 const PORT = 8000;
 
 app.listen(PORT, () => {

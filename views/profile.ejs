@@ -65,6 +65,7 @@
         <h3><%= user.full_name %></h3>
         <p><%= user.email %></p>
         <p>В основном пишу про веб - разработку, на React & Redux</p>
+        <% if(user.id == loginUser.id) %>
         <div class="aside-btns mt-3">
           <a class="btn accent-btn" href="">Редактировать</a>
           <a class="btn danger-btn" href="/api/signout">Выход</a>

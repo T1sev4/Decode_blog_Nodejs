@@ -9,27 +9,22 @@
     <%- include('partials/header.ejs') %>
     <div class="main-new-blog container mt-5">
       <h2>Новый блог</h2>
-      <form
-        class="mt-3"
-        action=""
-      >
+      <form class="mt-3" action="/api/newBlog" method="POST">
         <div class="mb-3">
-          <label
-            for="title"
-            class="form-label"
-            >Title</label
-          >
+          <label for="title" class="form-label">Title</label>
           <input
-            type="email"
+            type="text"
             class="form-control form-control-lg"
             id="title"
             placeholder="Введите заголовок блога"
+            name="title"
           />
         </div>
         <div class="mb-3">
           <select
             class="form-select form-select-lg"
             aria-label="Default select example"
+            name="category"
           >
             <% categories.forEach(category => { %>
             <option selected><%= category.name %></option>
@@ -37,11 +32,7 @@
           </select>
         </div>
         <div class="mb-3">
-          <label
-            for="formFile"
-            class="form-label"
-            >Выберите картинку</label
-          >
+          <label for="formFile" class="form-label">Выберите картинку</label>
 
           <input
             type="file"
@@ -54,9 +45,9 @@
             class="form-control"
             id="exampleFormControlTextarea1"
             rows="3"
-          >
-Введите описание блога</textarea
-          >
+            name="description"
+            placeholder="Введите описание блога"
+          ></textarea>
         </div>
 
         <button class="btn accent-btn">Создать</button>

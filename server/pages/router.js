@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Categories = require('../Categories/Categories');
 const User = require('../auth/User');
+const Blogs = require('../Blogs/Blog');
 router.get('/', async (req, res) => {
   const allCategories = await Categories.find();
   res.render('index', {

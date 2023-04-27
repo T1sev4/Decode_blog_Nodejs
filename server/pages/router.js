@@ -4,17 +4,21 @@ const Categories = require('../Categories/Categories');
 const User = require('../auth/User');
 const Blogs = require('../Blogs/Blog');
 router.get('/', async (req, res) => {
+  console.log(Blogs.find())
+  const blogs = await Blogs.find().populate('category').populate('author')
   const allCategories = await Categories.find();
   res.render('index', {
     categories: allCategories,
     user: req.user ? req.user : {},
+    blogs : blogs
   });
 });
 
 router.get('/profile/:id', async (req, res) => {
   const user = await User.findById(req.params.id);
+  const blogs = await Blogs.find({author: req.params.id}).populate('category').populate('author')
   if (user) {
-    res.render('profile', { user: user, loginUser: req.user });
+    res.render('profile', { user: user, loginUser: req.user, blogs });
   } else {
     res.redirect('/not-found');
   }
@@ -29,11 +33,13 @@ router.get('/newBlog', async (req, res) => {
     user: req.user ? req.user : {},
   });
 });
-router.get('/editBlog', async (req, res) => {
+router.get('/editBlog/:id', async (req, res) => {
   const allCategories = await Categories.find();
+  const blog = await Blogs.findById(req.params.id)
   res.render('edit-blog', {
     categories: allCategories,
     user: req.user ? req.user : {},
+    blog
   });
 });
 router.get('/login', (req, res) => {

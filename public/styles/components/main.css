@@ -22,9 +22,11 @@
 .card-body a {
   color: #000;
   font-weight: 400;
-  font-size: 28px;
-  line-height: 24px;
-  margin-top: 10px;
+  font-size: 16px;
+  
+}
+.dropdown-menu a{
+  line-height: 24px; 
 }
 .card-body p {
   font-weight: 400;

@@ -5,7 +5,7 @@ const BlogSchema = new mongoose.Schema({
   category: { type: Schema.Types.ObjectId, ref: 'categories' },
   description: String,
   image: String,
-  author: { type: Schema.Types.ObjectId, ref: 'Users' },
+  author: { type: Schema.Types.ObjectId, ref: 'user' },
 });
 
 module.exports = mongoose.model('blog', BlogSchema);

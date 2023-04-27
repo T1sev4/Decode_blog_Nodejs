@@ -10,23 +10,25 @@ const signUp = async (req, res) => {
     res.redirect('/register?error=1');
   } else if (req.body.password !== req.body.password2) {
     res.redirect('/register?error=2');
+  }else{
+    const findUser = await User.findOne({ email: req.body.email }).count();
+    if (findUser) {
+      res.redirect('/register?error=3');
+    }else{
+      bcrypt.genSalt(10, (err, salt) => {
+        // соединение соли и пароля
+        bcrypt.hash(req.body.password, salt, function (err, hash) {
+          new User({
+            email: req.body.email,
+            full_name: req.body.full_name,
+            password: hash,
+          }).save();
+          res.redirect('/login');
+        });
+      });
+    }
   }
-  const findUser = await User.findOne({ email: req.body.email }).count();
-  if (findUser) {
-    res.redirect('/register?error=3');
-  }
-
-  bcrypt.genSalt(10, (err, salt) => {
-    // соединение соли и пароля
-    bcrypt.hash(req.body.password, salt, function (err, hash) {
-      new User({
-        email: req.body.email,
-        full_name: req.body.full_name,
-        password: hash,
-      }).save();
-      res.redirect('/login');
-    });
-  });
+  
 };
 
 const signIn = (req, res) => {

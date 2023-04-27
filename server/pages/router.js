@@ -4,7 +4,6 @@ const Categories = require('../Categories/Categories');
 const User = require('../auth/User');
 const Blogs = require('../Blogs/Blog');
 router.get('/', async (req, res) => {
-  console.log(Blogs.find())
   const blogs = await Blogs.find().populate('category').populate('author')
   const allCategories = await Categories.find();
   res.render('index', {

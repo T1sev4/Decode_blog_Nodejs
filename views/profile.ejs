@@ -42,7 +42,7 @@
                       <a class="dropdown-item" href="/editBlog/<%=blog._id%>">Редактировать</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">Удалить</a>
+                      <a onclick="deleteBlog('<%= blog._id %>', '<%= blog.author._id %>')" class="dropdown-item">Удалить</a>
                     </li>
                   </ul>
                 </div>
@@ -81,5 +81,7 @@
       integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/deleteBlog.js"></script>
   </body>
 </html>

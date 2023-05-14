@@ -50,6 +50,15 @@ router.get('/register', (req, res) => {
 router.get('/not-found', (req, res) => {
   res.render('notFound');
 });
+router.get('/detail/:id', async (req, res) => {
+  const allCategories = await Categories.find();
+  const blog = await Blogs.findById(req.params.id).populate('category').populate('author')
+  res.render('blog-detail', { 
+    user: req.user ? req.user : {},
+    categories: allCategories, 
+    blog
+  });
+});
 // router.get('/*', (req, res) => {
 //   res.render('notFound');
 // });

@@ -19,22 +19,21 @@
         <div class="blogs">
           <div class="card">
             <img
-              src="/image/test.png"
+              src="<%= blog.image  %>"
               class="card-img-top"
               alt="..."
             />
             <div class="card-body">
-              <h3 class="">Card title</h3>
+              <h3 class=""><%= blog.title  %></h3>
               <p class="">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                <%= blog.description  %>
               </p>
               <div class="card-info">
                 <span><i class="fa-solid fa-calendar"></i>26.06.2020</span>
                 <span><i class="fa-solid fa-eye"></i>21</span>
                 <span><i class="fa-solid fa-comment"></i>4</span>
-                <span><i class="fa-solid fa-comments"></i>Веб-разработка</span>
-                <span><i class="fa-solid fa-user"></i>Nast1289</span>
+                <span><i class="fa-solid fa-comments"></i><%= blog.category.name %></span>
+                <span><i class="fa-solid fa-user"></i><%= blog.author.full_name %></span>
               </div>
             </div>
           </div>
@@ -79,11 +78,13 @@
       <div class="aside">
         <h2>Категории</h2>
         <div class="mt-5">
-          <a
-            class="aside-category"
-            href=""
-            >Прогнозы в IT</a
-          >
+          <% categories.forEach(category => { %>
+            <a
+              class="aside-category"
+              href="/<%= category.key %>"
+              ><%= category.name %></a
+            >
+            <% }) %>
         </div>
       </div>
     </div>

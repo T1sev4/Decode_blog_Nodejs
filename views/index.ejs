@@ -16,25 +16,31 @@
             профессиональных программистов и IT-специалистов.
           </p>
         </div>
+        <%
+          if(blogs.length > 0){ 
+        %>
+
         <div class="blogs">
           <% 
             blogs.forEach(blog => { 
           %>
           <div class="card mb-5">
-            <img
+            <a href="/detail/<%= blog._id%>">
+              <img
               src="<%= blog.image %>"
               class="card-img-top"
               alt="..."
             />
+            </a>
             <div class="card-body">
               <a
                 href="/detail/<%= blog._id%>"
                 class=""
                 ><%= blog.title %></a
               >
-              <p class="">
+              <a href="/detail/<%= blog._id%>" class="">
                 <%= blog.description %>
-              </p>
+              </a>
               <div class="card-info">
                 <span><i class="fa-solid fa-calendar"></i>26.06.2020</span>
                 <span><i class="fa-solid fa-eye"></i>21</span>
@@ -44,8 +50,24 @@
               </div>
             </div>
           </div>
+
           <% }) %>
         </div>
+
+        <div class="pages">
+          <% 
+            for (let i = 0; i < pages; i++) {
+          %>
+            <a href="?page=<%= i%>"><%= i + 1%></a>
+          <%
+            } 
+          %> 
+        </div>
+
+        <% }else{ %>
+          <h2 class="zeroBlogs"> 0 блогов</h2>
+        <% } %>
+        
       </div>
       <div class="aside">
         <h2>Категории</h2>
@@ -53,7 +75,7 @@
           <% categories.forEach(category => { %>
           <a
             class="aside-category"
-            href="/<%= category.key %>"
+            href="?category=<%= category.key %>"
             ><%= category.name %></a
           >
           <% }) %>

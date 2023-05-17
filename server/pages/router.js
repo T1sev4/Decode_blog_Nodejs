@@ -4,12 +4,33 @@ const Categories = require('../Categories/Categories');
 const User = require('../auth/User');
 const Blogs = require('../Blogs/Blog');
 router.get('/', async (req, res) => {
-  const blogs = await Blogs.find().populate('category').populate('author')
+  // category filter //
+  const option = {};
+  const category = await Categories.findOne({key: req.query.category});
+  if(category){
+    option.category = category;
+  }  
+  // category filter //
+
+  // pagination //
+
+  let page = 0;
+  let limit = 3;
+  if(req.query.page && req.query.page > 0){
+    page = req.query.page;
+  }
+  let totalBlogs = await Blogs.count();
+
+
+  // pagination //
+
+  const blogs = await Blogs.find(option).limit(limit).skip(page * limit).populate('category').populate('author')
   const allCategories = await Categories.find();
   res.render('index', {
     categories: allCategories,
     user: req.user ? req.user : {},
-    blogs : blogs
+    blogs : blogs,
+    pages: Math.ceil(totalBlogs / limit)
   });
 });
 

@@ -20,11 +20,21 @@
   margin: 25px 0;
 }
 .card-body a {
+  display: block;
   color: #000;
   font-weight: 400;
   font-size: 16px;
-  
+  margin-bottom: 20px;
 }
+
+.card-body a:first-child::first-letter{
+  text-transform: capitalize;
+}
+.card-body a:first-child{
+  font-size: 28px;
+  font-weight: 600;
+}
+
 .dropdown-menu a{
   line-height: 24px; 
 }
@@ -41,4 +51,16 @@
 }
 .card-info i {
   margin-right: 10px;
+}
+.pages a{
+  color: #000;
+  transition: .4s;
+}
+.pages a:hover{
+  color: #007bff;
+}
+.zeroBlogs{
+  font-size: 40px;
+  margin-top: 40px;
+  text-align: center;
 }

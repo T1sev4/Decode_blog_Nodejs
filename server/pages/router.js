@@ -8,7 +8,8 @@ router.get('/', async (req, res) => {
   const option = {};
   const category = await Categories.findOne({key: req.query.category});
   if(category){
-    option.category = category;
+    option.category = category._id;
+    res.locals.category = req.query.category;
   }  
   // category filter //
 
@@ -19,10 +20,18 @@ router.get('/', async (req, res) => {
   if(req.query.page && req.query.page > 0){
     page = req.query.page;
   }
-  let totalBlogs = await Blogs.count();
-
-
   // pagination //
+  // search //
+  if(req.query.search && req.query.search.length > 0){
+    option.$or = [
+      {
+        title: new RegExp(req.query.search, 'i')
+      },
+    ]
+    res.locals.search = req.query.search
+  }
+    // search //
+  let totalBlogs = await Blogs.count(option);
 
   const blogs = await Blogs.find(option).limit(limit).skip(page * limit).populate('category').populate('author')
   const allCategories = await Categories.find();

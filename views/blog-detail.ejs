@@ -38,34 +38,44 @@
             </div>
           </div>
           <div class="comments mt-4">
-            <h2 class="comments-number">2 комментария</h2>
+            <h2 class="comments-number"><%= comments.length  %> комментария</h2>
+            <% if(user && user._id){  %>
+            <div class="comment-add mb-5">
+              <form class="mt-5" onsubmit="sendComment(event)">
+                <textarea
+                  class="form-control"
+                  id="comment_text"
+                  placeholder="Введите текст комментария"
+                ></textarea>
+                <input type="hidden" value="<%= user._id%>" id="comment_author">
+                <input type="hidden" value="<%= blog._id%>" id="comment_blog">
+                <button type="submit" class="btn accent-btn mt-2">Отправить</button>
+              </form>
+            </div>
+            <% }else{ %>
+              <p class="mt-3">
+                <a href="/login">Войдите</a> или 
+                <a href="/register">Зарегистрируйтесь</a>
+                чтобы оставить комментарий
+              </p>
+            <% } %>
             <div class="comments-block">
-              <div class="comment">
+              <% comments.forEach(comment => { %>
+              <div class="comment mb-5">
                 <div class="comment-title">
                   <img
                     src="/image/avatar.png"
                     alt=""
                   />
-                  <h3>Елнур Сеитжанов</h3>
+                  <h3><%= comment.authorId.full_name  %></h3>
                 </div>
                 <p>
-                  В отличие от обычных виджетов пользовательского интерфейса
-                  JavaScript, комплексные виджеты - это полноценные приложения,
-                  которые не требуют дополнительной настройки и кастомизации.
+                 <%= comment.text  %>
                 </p>
               </div>
+              <% }) %>
             </div>
-            <div class="comment-add">
-              <form class="mt-5">
-                <textarea
-                  class="form-control"
-                  id="exampleFormControlTextarea1"
-                  rows="3"
-                  placeholder="Введит текст комментария"
-                ></textarea>
-                <button class="btn accent-btn mt-2">Отправить</button>
-              </form>
-            </div>
+            
             <!-- <div class="comment-none accent-color mt-3">
               <p>
                 Чтобы оставить комментарий <span>зарегистрируйтесь</span>, или
@@ -88,5 +98,6 @@
         </div>
       </div>
     </div>
+    <%- include('partials/scripts.ejs')%>
   </body>
 </html>

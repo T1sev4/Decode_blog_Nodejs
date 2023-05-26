@@ -3,6 +3,7 @@ const router = express.Router();
 const Categories = require('../Categories/Categories');
 const User = require('../auth/User');
 const Blogs = require('../Blogs/Blog');
+const Comments = require('../Comments/Comments');
 router.get('/', async (req, res) => {
   // category filter //
   const option = {};
@@ -81,12 +82,14 @@ router.get('/not-found', (req, res) => {
   res.render('notFound');
 });
 router.get('/detail/:id', async (req, res) => {
+  const comments = await Comments.find({blogId: req.params.id}).populate('authorId')
   const allCategories = await Categories.find();
   const blog = await Blogs.findById(req.params.id).populate('category').populate('author')
   res.render('blog-detail', { 
     user: req.user ? req.user : {},
     categories: allCategories, 
-    blog
+    blog,
+    comments
   });
 });
 // router.get('/*', (req, res) => {

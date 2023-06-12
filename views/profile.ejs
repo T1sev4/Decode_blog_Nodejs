@@ -10,10 +10,16 @@
     <div class="main container mt-5">
       <div class="main-left">
         <div class="main-title">
-          <div class="profile-title">
-            <h2>Мои блоги</h2>
-            <a class="btn accent-btn" href="/newBlog">Добавить блог</a>
-          </div>
+          <% if(user.id == currentUser.id){%>
+            <div class="profile-title">
+              <h2>Мои блоги</h2>
+              <a class="btn accent-btn" href="/newBlog">Добавить блог</a>
+            </div>
+          <% }else{ %>
+            <div class="profile-title">
+              <h2>Блоги пользователя <%= user.full_name  %></h2>
+            </div>
+          <% } %>
           <p>
             Популярные и лучшие публикации по программированию для начинающих и
             профессиональных программистов и IT-специалистов.
@@ -27,25 +33,27 @@
             <img src="<%= blog.image %>" class="card-img-top" alt="..." />
             <div class="card-body">
               <div class="card-title">
-                <a href="" class=""><%= blog.title %></a>
-                <div class="dropdown">
-                  <button
-                    class="btn"
-                    type="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="/editBlog/<%=blog._id%>">Редактировать</a>
-                    </li>
-                    <li>
-                      <a onclick="deleteBlog('<%= blog._id %>', '<%= blog.author._id %>')" class="dropdown-item">Удалить</a>
-                    </li>
-                  </ul>
-                </div>
+                <a href="" class="card_title_text"><%= blog.title %></a>
+                <% if(user.id == currentUser.id){%>
+                  <div class="dropdown">
+                    <button
+                      class="btn"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="/editBlog/<%=blog._id%>">Редактировать</a>
+                      </li>
+                      <li>
+                        <a onclick="deleteBlog('<%= blog._id %>', '<%= blog.author._id %>')" class="dropdown-item">Удалить</a>
+                      </li>
+                    </ul>
+                  </div>
+                <% } %>
               </div>
 
               <p class="">
@@ -68,11 +76,11 @@
         <h3><%= user.full_name %></h3>
         <p><%= user.email %></p>
         <p>В основном пишу про веб - разработку, на React & Redux</p>
-        <% if(user.id == loginUser.id) %>
+        <% if(user.id == currentUser.id){%>
         <div class="aside-btns mt-3">
-          <a class="btn accent-btn" href="">Редактировать</a>
           <a class="btn danger-btn" href="/api/signout">Выход</a>
         </div>
+        <% } %>
       </div>
     </div>
 

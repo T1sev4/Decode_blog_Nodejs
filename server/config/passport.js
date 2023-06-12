@@ -2,6 +2,7 @@ const passport = require('passport');
 const User = require('../auth/User');
 const bcrypt = require('bcrypt');
 const LocalStrategy = require('passport-local');
+const GitHubStrategy = require('passport-github2').Strategy;
 
 passport.use(
   new LocalStrategy(
@@ -26,6 +27,30 @@ passport.use(
     }
   )
 );
+
+passport.use(new GitHubStrategy(
+  {
+    clientID: '51d171cee46de115a99c',
+    clientSecret: '4b59656ce18a515611c106a63a6b5be00c10d575',
+    callbackURL: "http://localhost:8000/auth/github/callback",
+    scope: ['openid', 'email', 'profile']
+  },
+  async function(accessToken, refreshToken, profile, cb) {
+      const user = await User.findOne({ GitHubID: profile.id })
+      if(!user){
+        const newUser = await new User({
+          GitHubID: profile.id,
+          full_name: profile.username,
+          // email: profile.emails[0].value
+        }).save()
+
+        return cb(null, profile);
+      }else{
+        console.log('GitHub user already exist')
+        return cb(null, profile)
+      }
+  }
+));
 
 passport.serializeUser(function (user, done) {
   done(null, user._id);

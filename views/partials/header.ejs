@@ -11,9 +11,9 @@
         </button>
       </form>
 
-      <% if(user._id && user.full_name.length > 0){ %>
+      <% if(currentUser._id && currentUser.full_name.length > 0){ %>
       <div class="header-avatar">
-        <a href="/profile/<%= user._id  %>">
+        <a href="/profile/<%= currentUser._id  %>">
           <img src="/image/avatar.png" alt="" />
         </a>
       </div>

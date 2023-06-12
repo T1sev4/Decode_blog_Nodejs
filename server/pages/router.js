@@ -36,47 +36,60 @@ router.get('/', async (req, res) => {
 
   const blogs = await Blogs.find(option).limit(limit).skip(page * limit).populate('category').populate('author')
   const allCategories = await Categories.find();
+  let currentUser = {}
+  if(req.user){
+    currentUser = req.user
+  }
   res.render('index', {
     categories: allCategories,
     user: req.user ? req.user : {},
+    currentUser,
     blogs : blogs,
     pages: Math.ceil(totalBlogs / limit)
   });
 });
 
 router.get('/profile/:id', async (req, res) => {
+  const currentUser = req.user
   const user = await User.findById(req.params.id);
   const blogs = await Blogs.find({author: req.params.id}).populate('category').populate('author')
   if (user) {
-    res.render('profile', { user: user, loginUser: req.user, blogs });
+    res.render('profile', { user: user, loginUser: req.user, blogs, currentUser });
   } else {
     res.redirect('/not-found');
   }
 });
-router.get('/blogDetail', (req, res) => {
-  res.render('blog-detail', { user: req.user ? req.user : {} });
-});
 router.get('/newBlog', async (req, res) => {
   const allCategories = await Categories.find();
+  let currentUser = {}
+  if(req.user){
+    currentUser = req.user
+  }
   res.render('new-blog', {
     categories: allCategories,
     user: req.user ? req.user : {},
+    currentUser
   });
 });
 router.get('/editBlog/:id', async (req, res) => {
   const allCategories = await Categories.find();
   const blog = await Blogs.findById(req.params.id)
+  let currentUser = {}
+  if(req.user){
+    currentUser = req.user
+  }
   res.render('edit-blog', {
     categories: allCategories,
     user: req.user ? req.user : {},
+    currentUser,
     blog
   });
 });
 router.get('/login', (req, res) => {
-  res.render('login', { user: req.user ? req.user : {} });
+  res.render('login', { user: req.user ? req.user : {}, currentUser: {} });
 });
 router.get('/register', (req, res) => {
-  res.render('register', { user: req.user ? req.user : {} });
+  res.render('register', { user: req.user ? req.user : {}, currentUser: {} });
 });
 router.get('/not-found', (req, res) => {
   res.render('notFound');
@@ -85,8 +98,13 @@ router.get('/detail/:id', async (req, res) => {
   const comments = await Comments.find({blogId: req.params.id}).populate('authorId')
   const allCategories = await Categories.find();
   const blog = await Blogs.findById(req.params.id).populate('category').populate('author')
+  let currentUser = {}
+  if(req.user){
+    currentUser = req.user
+  }
   res.render('blog-detail', { 
     user: req.user ? req.user : {},
+    currentUser,
     categories: allCategories, 
     blog,
     comments

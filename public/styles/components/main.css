@@ -22,17 +22,15 @@
 .card-body a {
   display: block;
   color: #000;
-  font-weight: 400;
-  font-size: 16px;
-  margin-bottom: 20px;
 }
 
 .card-body a:first-child::first-letter{
   text-transform: capitalize;
 }
-.card-body a:first-child{
+.card_title_text{
   font-size: 28px;
   font-weight: 600;
+  margin-bottom: 20px;
 }
 
 .dropdown-menu a{

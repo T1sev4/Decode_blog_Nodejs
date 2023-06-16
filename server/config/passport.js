@@ -36,19 +36,25 @@ passport.use(new GitHubStrategy(
     scope: ['openid', 'email', 'profile']
   },
   async function(accessToken, refreshToken, profile, cb) {
-      const user = await User.findOne({ GitHubID: profile.id })
-      if(!user){
-        const newUser = await new User({
-          GitHubID: profile.id,
-          full_name: profile.username,
-          // email: profile.emails[0].value
-        }).save()
+      // const user = await User.findOne({ GitHubID: profile.id })
+      const newUser = await new User({
+        githubId: profile.id,
+        full_name: profile.username,
+      }).save();
 
-        return cb(null, profile);
-      }else{
-        console.log('GitHub user already exist')
-        return cb(null, profile)
-      }
+      return cb(null, newUser);
+      // if(!user){
+      //   const newUser = await new User({
+      //     GitHubID: profile.id,
+      //     full_name: profile.username,
+      //     // email: profile.emails[0].value
+      //   }).save()
+
+      //   return cb(null, newUser);
+      // }else{
+      //   console.log('GitHub user already exist')
+      //   return cb(null, null)
+      // }
   }
 ));
 

@@ -38,7 +38,7 @@ passport.use(new GitHubStrategy(
   async function(accessToken, refreshToken, profile, cb) {
       // const user = await User.findOne({ GitHubID: profile.id })
       const newUser = await new User({
-        githubId: profile.id,
+        GitHubID: profile.id,
         full_name: profile.username,
       }).save();
 
@@ -47,7 +47,7 @@ passport.use(new GitHubStrategy(
       //   const newUser = await new User({
       //     GitHubID: profile.id,
       //     full_name: profile.username,
-      //     // email: profile.emails[0].value
+      //     email: profile.emails[0].value
       //   }).save()
 
       //   return cb(null, newUser);

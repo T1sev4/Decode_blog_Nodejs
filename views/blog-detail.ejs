@@ -24,8 +24,8 @@
               alt="..."
             />
             <div class="card-body">
-              <a class=""><%= blog.title  %></a>
-              <a class="">
+              <a class="card_title_text"><%= blog.title  %></a>
+              <a class="mb-5">
                 <%= blog.description  %>
               </a>
               <div class="card-info">
@@ -53,7 +53,7 @@
               </form>
             </div>
             <% }else{ %>
-              <p class="mt-3">
+              <p class="mt-3 mb-5">
                 <a href="/login">Войдите</a> или 
                 <a href="/register">Зарегистрируйтесь</a>
                 чтобы оставить комментарий
@@ -91,7 +91,7 @@
           <% categories.forEach(category => { %>
             <a
               class="aside-category"
-              href="/<%= category.key %>"
+              href="/?category=<%= category.key %>"
               ><%= category.name %></a
             >
             <% }) %>
